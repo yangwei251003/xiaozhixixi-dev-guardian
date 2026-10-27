@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>小智析析开发守门员 · 合成 CLI 报告</title><link rel="icon" href="data:,"><style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#081824;color:#e7f2f6;font:16px/1.7 system-ui,sans-serif}main{max-width:1080px;margin:auto;padding:44px 24px 70px}.kicker{letter-spacing:.13em;color:#6fdbc6;font-size:13px}h1{font-size:clamp(27px,5vw,44px);line-height:1.25;margin:12px 0}h2{font-size:23px;margin-top:32px}p{color:#bdd0dc}.notice{background:#153343;border:1px solid #3b7a87;padding:16px;border-radius:12px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}.stat{padding:20px;background:#102b3b;border:1px solid #244958;border-radius:14px}strong{color:#7be2c5}.stat b{font-size:30px;display:block}img{max-width:100%;height:auto;border-radius:14px}table{width:100%;border-collapse:collapse;table-layout:fixed}td,th{padding:12px;text-align:left;border-bottom:1px solid #294453;overflow-wrap:anywhere}th{color:#7be2c5}pre{background:#06121c;white-space:pre-wrap;overflow-wrap:anywhere;padding:16px;border-radius:10px;font:13px/1.7 ui-monospace,monospace}details{border:1px solid #284454;border-radius:10px;padding:14px;margin:12px 0}summary{cursor:pointer}a{color:#7be2c5}footer{margin-top:36px;color:#9fb4c2;font-size:14px}@media(max-width:600px){main{padding:28px 16px}.stats{grid-template-columns:1fr}td,th{padding:9px 6px;font-size:14px}}
+</style><main><div class="kicker">LOCAL WORKFLOW · SYNTHETIC CONTRACT</div><h1>小智析析开发守门员</h1><p>让阶段预检、人工证据记录和跨窗口交接有迹可循。</p><div class="notice"><strong>这是合成项目的真实离线 CLI 报告。</strong>未安装/调用实际宿主插件，未读取真实小智析析业务、私密配置或模型服务。记录中的“阶段完成”内容是明确虚构的演示输入，不能作为业务验收。下图是流程示意。</div><div class="stats"><div class="stat"><b>10</b>实际 CLI 调用</div><div class="stat"><b>3</b>原有 pytest 另行本机通过</div><div class="stat"><b>0</b>真实业务 / 外部模型调用</div></div><img src="workflow.svg" alt="流程示意：合成 SPEC 与调研，原 CLI 预检，人工记录，Progress 交接；宿主触发未验"><h2>观测到的退出码</h2><table><thead><tr><th>合成场景</th><th>退出码</th><th>结果</th></tr></thead><tbody><tr><td>stage-0 preflight with synthetic contract</td><td><code>0</code></td><td>符合预期</td></tr><tr><td>missing stage-1 research is rejected</td><td><code>2</code></td><td>符合预期</td></tr><tr><td>stage-1 preflight after explicit synthetic fixture addition</td><td><code>0</code></td><td>符合预期</td></tr><tr><td>record fictional stage 0</td><td><code>0</code></td><td>符合预期</td></tr><tr><td>record fictional stage 1</td><td><code>0</code></td><td>符合预期</td></tr><tr><td>handoff rejects unrecorded stage 2</td><td><code>1</code></td><td>符合预期</td></tr><tr><td>handoff for recorded stages 0 and 1</td><td><code>0</code></td><td>符合预期</td></tr><tr><td>missing required project-root argument</td><td><code>2</code></td><td>符合预期</td></tr><tr><td>out-of-range stage</td><td><code>2</code></td><td>符合预期</td></tr><tr><td>project without SPEC is rejected</td><td><code>1</code></td><td>符合预期</td></tr></tbody></table><p>退出码 0/2/1 都包含预期分支；匹配结果不证明调研质量、测试真实性或工具已经安装。Git 元数据来自新建的隔离合成仓库，不联系远端。</p><h2>实际命令与输出</h2><details><summary>stage-0 preflight with synthetic contract · exit 0</summary><pre>guardian.py preflight --project-root &lt;SYNTHETIC_PROJECT&gt; --stage 0 --task 合成契约检查</pre><pre>{
+  &quot;ok&quot;: true,
+  &quot;stage&quot;: 0,
+  &quot;task&quot;: &quot;合成契约检查&quot;,
+  &quot;research&quot;: &quot;&lt;SYNTHETIC_PROJECT&gt;\\research\\调研报告.md&quot;,
+  &quot;missing&quot;: [],
+  &quot;tool_matches&quot;: [
+    &quot;| 阶段0 合成契约检查 | guardian CLI（本仓库） | 阶段 0 | 观察本地文件预检 |&quot;
+  ],
+  &quot;next_actions&quot;: [
+    &quot;Read the stage research&quot;,
+    &quot;Load and announce matched Skills&quot;,
+    &quot;Define a failing test or observable acceptance check&quot;
+  ]
+}
+</pre></details><details><summary>missing stage-1 research is rejected · exit 2</summary><pre>guardian.py preflight --project-root &lt;SYNTHETIC_PROJECT&gt; --stage 1 --task 合成阶段记录</pre><pre>{
+  &quot;ok&quot;: false,
+  &quot;stage&quot;: 1,
+  &quot;task&quot;: &quot;合成阶段记录&quot;,
+  &quot;research&quot;: &quot;&lt;SYNTHETIC_PROJECT&gt;\\research\\stage-1-research.md&quot;,
+  &quot;missing&quot;: [
+    &quot;research/stage-1-research.md&quot;
+  ],
+  &quot;tool_matches&quot;: [
+    &quot;| 阶段1 合成阶段记录 | guardian CLI（本仓库） | 阶段 1 | 演示状态记录与交接 |&quot;
+  ],
+  &quot;next_actions&quot;: [
+    &quot;Read the stage research&quot;,
+    &quot;Load and announce matched Skills&quot;,
+    &quot;Define a failing test or observable acceptance check&quot;
+  ]
+}
+</pre></details><details><summary>stage-1 preflight after explicit synthetic fixture addition · exit 0</summary><pre>guardian.py preflight --project-root &lt;SYNTHETIC_PROJECT&gt; --stage 1 --task 合成阶段记录</pre><pre>{
+  &quot;ok&quot;: true,
+  &quot;stage&quot;: 1,
+  &quot;task&quot;: &quot;合成阶段记录&quot;,
+  &quot;research&quot;: &quot;&lt;SYNTHETIC_PROJECT&gt;\\research\\stage-1-research.md&quot;,
+  &quot;missing&quot;: [],
+  &quot;tool_matches&quot;: [
+    &quot;| 阶段1 合成阶段记录 | guardian CLI（本仓库） | 阶段 1 | 演示状态记录与交接 |&quot;
+  ],
+  &quot;next_actions&quot;: [
+    &quot;Read the stage research&quot;,
+    &quot;Load and announce matched Skills&quot;,
+    &quot;Define a failing test or observable acceptance check&quot;
+  ]
+}
+</pre></details><details><summary>record fictional stage 0 · exit 0</summary><pre>guardian.py record-stage --project-root &lt;SYNTHETIC_PROJECT&gt; --stage 0 --summary 合成阶段 0 记录（非业务完成） --tests 仅演示写入；此文本不证明业务测试通过 --next 补充真实项目证据后再决定后续</pre><pre>Recorded stage 0 in &lt;SYNTHETIC_PROJECT&gt;\research\stage-status.json
+</pre></details><details><summary>record fictional stage 1 · exit 0</summary><pre>guardian.py record-stage --project-root &lt;SYNTHETIC_PROJECT&gt; --stage 1 --summary 合成阶段 1 记录（非业务完成） --tests 仅演示写入；此文本不证明业务测试通过 --next 补充真实项目证据后再决定后续</pre><pre>Recorded stage 1 in &lt;SYNTHETIC_PROJECT&gt;\research\stage-status.json
+</pre></details><details><summary>handoff rejects unrecorded stage 2 · exit 1</summary><pre>guardian.py handoff --project-root &lt;SYNTHETIC_PROJECT&gt; --completed 0,2 --next-stage 3</pre><pre>Missing recorded stage evidence: 2
+</pre></details><details><summary>handoff for recorded stages 0 and 1 · exit 0</summary><pre>guardian.py handoff --project-root &lt;SYNTHETIC_PROJECT&gt; --completed 0,1 --next-stage 2</pre><pre>Wrote &lt;SYNTHETIC_PROJECT&gt;\Progress.md
+请在 &lt;SYNTHETIC_PROJECT&gt; 继续开发小智析析。先完整阅读 SPEC.md、Progress.md 和 research/skills-map.md，先完成联网调研并创建 research/stage-2-research.md，再调用 $guard-xiaozhixixi-development 对阶段 2 做 preflight，确认当前 Git 状态和测试基线后再继续。不得显示 backend/.env 的值。
+</pre></details><details><summary>missing required project-root argument · exit 2</summary><pre>guardian.py preflight --stage 0 --task 合成</pre><pre>usage: guardian.py preflight [-h] --project-root PROJECT_ROOT --stage
+                             {0,1,2,3,4,5,6,7} --task TASK
+guardian.py preflight: error: the following arguments are required: --project-root
+</pre></details><details><summary>out-of-range stage · exit 2</summary><pre>guardian.py preflight --project-root &lt;SYNTHETIC_PROJECT&gt; --stage 8 --task 合成</pre><pre>usage: guardian.py preflight [-h] --project-root PROJECT_ROOT --stage
+                             {0,1,2,3,4,5,6,7} --task TASK
+guardian.py preflight: error: argument --stage: invalid choice: 8 (choose from 0, 1, 2, 3, 4, 5, 6, 7)
+</pre></details><details><summary>project without SPEC is rejected · exit 1</summary><pre>guardian.py preflight --project-root &lt;SYNTHETIC_WORKSPACE&gt;\no-spec-project --stage 0 --task 合成</pre><pre>SPEC.md not found under &lt;SYNTHETIC_WORKSPACE&gt;\no-spec-project
+</pre></details><h2>生成的交接（合成）</h2><pre># Progress.md — 小智析析跨窗口交接
+
+更新时间：2026-10-27T03:53:24+08:00
+
+## 已完成阶段
+
+- 阶段 0: 合成阶段 0 记录（非业务完成）
+  - 验证: 仅演示写入；此文本不证明业务测试通过
+  - 后续: 补充真实项目证据后再决定后续
+- 阶段 1: 合成阶段 1 记录（非业务完成）
+  - 验证: 仅演示写入；此文本不证明业务测试通过
+  - 后续: 补充真实项目证据后再决定后续
+
+## 关键决策
+
+- `SPEC.md` 是唯一产品规格；`research/skills-map.md` 是每项任务前的工具入口。
+- 每阶段实现前先完成联网调研并写入对应 research 文件。
+- 真实失败不得由模拟业务结果掩盖；密钥只从本地 `backend/.env` 读取。
+
+## Git 与工作区
+
+- 分支：`synthetic-demo`
+- 最近提交：
+
+```text
+暂无提交
+```
+
+- 未提交状态：
+
+```text
+?? SPEC.md
+?? research/
+```
+
+## 下一阶段
+
+- 阶段：2
+- 调研文件：尚未创建；先完成联网调研并创建 `research/stage-2-research.md`
+- 开始前：运行开发守门员 preflight，加载匹配的 Skill/插件，并确认测试基线。
+
+## 新窗口必须提供
+
+- 仓库路径、`SPEC.md`、本文件、`research/skills-map.md`、下一阶段调研文件。
+- 说明本地 `backend/.env` 已配置，但不要复制或粘贴任何密钥值。
+
+## 新窗口提示词
+
+```text
+请在 &lt;SYNTHETIC_PROJECT&gt; 继续开发小智析析。先完整阅读 SPEC.md、Progress.md 和 research/skills-map.md，先完成联网调研并创建 research/stage-2-research.md，再调用 $guard-xiaozhixixi-development 对阶段 2 做 preflight，确认当前 Git 状态和测试基线后再继续。不得显示 backend/.env 的值。
+```
+</pre><footer>可下载 <a href="validation.json">验证数据</a> · <a href="cli-transcript.json">真实调用记录</a> · <a href="Progress.synthetic.md">合成交接文件</a>。路径已替换为占位符；这里是只读报告，没有在线改项目功能。</footer></main></html>

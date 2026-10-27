@@ -1,0 +1,25 @@
+{
+  "synthetic": true,
+  "source_cli_unmodified": true,
+  "cli_invocations": 10,
+  "all_expected_exit_codes_observed": true,
+  "recorded_stages": [
+    "0",
+    "1"
+  ],
+  "initial_contract_files_unchanged": true,
+  "missing_research_exit": 2,
+  "missing_recorded_stage_exit": 1,
+  "rejected_handoff_wrote_nothing": true,
+  "missing_root_argument_exit": 2,
+  "out_of_range_stage_exit": 2,
+  "missing_SPEC_exit": 1,
+  "git_available": true,
+  "isolated_git_repository_initialized": true,
+  "actual_git_metadata_observed": true,
+  "host_plugin_installed_or_invoked": false,
+  "real_business_project_read_or_written": false,
+  "external_service_or_model_called": false,
+  "private_configuration_read": false,
+  "stage_claims_are_fictional_not_business_acceptance": true
+}

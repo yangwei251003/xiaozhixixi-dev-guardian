@@ -1,0 +1,168 @@
+[
+  {
+    "label": "stage-0 preflight with synthetic contract",
+    "arguments": [
+      "preflight",
+      "--project-root",
+      "<SYNTHETIC_PROJECT>",
+      "--stage",
+      "0",
+      "--task",
+      "合成契约检查"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "stdout": "{\n  \"ok\": true,\n  \"stage\": 0,\n  \"task\": \"合成契约检查\",\n  \"research\": \"<SYNTHETIC_PROJECT>\\\\research\\\\调研报告.md\",\n  \"missing\": [],\n  \"tool_matches\": [\n    \"| 阶段0 合成契约检查 | guardian CLI（本仓库） | 阶段 0 | 观察本地文件预检 |\"\n  ],\n  \"next_actions\": [\n    \"Read the stage research\",\n    \"Load and announce matched Skills\",\n    \"Define a failing test or observable acceptance check\"\n  ]\n}\n",
+    "stderr": ""
+  },
+  {
+    "label": "missing stage-1 research is rejected",
+    "arguments": [
+      "preflight",
+      "--project-root",
+      "<SYNTHETIC_PROJECT>",
+      "--stage",
+      "1",
+      "--task",
+      "合成阶段记录"
+    ],
+    "exit_code": 2,
+    "expected_exit_code": 2,
+    "stdout": "{\n  \"ok\": false,\n  \"stage\": 1,\n  \"task\": \"合成阶段记录\",\n  \"research\": \"<SYNTHETIC_PROJECT>\\\\research\\\\stage-1-research.md\",\n  \"missing\": [\n    \"research/stage-1-research.md\"\n  ],\n  \"tool_matches\": [\n    \"| 阶段1 合成阶段记录 | guardian CLI（本仓库） | 阶段 1 | 演示状态记录与交接 |\"\n  ],\n  \"next_actions\": [\n    \"Read the stage research\",\n    \"Load and announce matched Skills\",\n    \"Define a failing test or observable acceptance check\"\n  ]\n}\n",
+    "stderr": ""
+  },
+  {
+    "label": "stage-1 preflight after explicit synthetic fixture addition",
+    "arguments": [
+      "preflight",
+      "--project-root",
+      "<SYNTHETIC_PROJECT>",
+      "--stage",
+      "1",
+      "--task",
+      "合成阶段记录"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "stdout": "{\n  \"ok\": true,\n  \"stage\": 1,\n  \"task\": \"合成阶段记录\",\n  \"research\": \"<SYNTHETIC_PROJECT>\\\\research\\\\stage-1-research.md\",\n  \"missing\": [],\n  \"tool_matches\": [\n    \"| 阶段1 合成阶段记录 | guardian CLI（本仓库） | 阶段 1 | 演示状态记录与交接 |\"\n  ],\n  \"next_actions\": [\n    \"Read the stage research\",\n    \"Load and announce matched Skills\",\n    \"Define a failing test or observable acceptance check\"\n  ]\n}\n",
+    "stderr": ""
+  },
+  {
+    "label": "record fictional stage 0",
+    "arguments": [
+      "record-stage",
+      "--project-root",
+      "<SYNTHETIC_PROJECT>",
+      "--stage",
+      "0",
+      "--summary",
+      "合成阶段 0 记录（非业务完成）",
+      "--tests",
+      "仅演示写入；此文本不证明业务测试通过",
+      "--next",
+      "补充真实项目证据后再决定后续"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "stdout": "Recorded stage 0 in <SYNTHETIC_PROJECT>\\research\\stage-status.json\n",
+    "stderr": ""
+  },
+  {
+    "label": "record fictional stage 1",
+    "arguments": [
+      "record-stage",
+      "--project-root",
+      "<SYNTHETIC_PROJECT>",
+      "--stage",
+      "1",
+      "--summary",
+      "合成阶段 1 记录（非业务完成）",
+      "--tests",
+      "仅演示写入；此文本不证明业务测试通过",
+      "--next",
+      "补充真实项目证据后再决定后续"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "stdout": "Recorded stage 1 in <SYNTHETIC_PROJECT>\\research\\stage-status.json\n",
+    "stderr": ""
+  },
+  {
+    "label": "handoff rejects unrecorded stage 2",
+    "arguments": [
+      "handoff",
+      "--project-root",
+      "<SYNTHETIC_PROJECT>",
+      "--completed",
+      "0,2",
+      "--next-stage",
+      "3"
+    ],
+    "exit_code": 1,
+    "expected_exit_code": 1,
+    "stdout": "",
+    "stderr": "Missing recorded stage evidence: 2\n"
+  },
+  {
+    "label": "handoff for recorded stages 0 and 1",
+    "arguments": [
+      "handoff",
+      "--project-root",
+      "<SYNTHETIC_PROJECT>",
+      "--completed",
+      "0,1",
+      "--next-stage",
+      "2"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "stdout": "Wrote <SYNTHETIC_PROJECT>\\Progress.md\n请在 <SYNTHETIC_PROJECT> 继续开发小智析析。先完整阅读 SPEC.md、Progress.md 和 research/skills-map.md，先完成联网调研并创建 research/stage-2-research.md，再调用 $guard-xiaozhixixi-development 对阶段 2 做 preflight，确认当前 Git 状态和测试基线后再继续。不得显示 backend/.env 的值。\n",
+    "stderr": ""
+  },
+  {
+    "label": "missing required project-root argument",
+    "arguments": [
+      "preflight",
+      "--stage",
+      "0",
+      "--task",
+      "合成"
+    ],
+    "exit_code": 2,
+    "expected_exit_code": 2,
+    "stdout": "",
+    "stderr": "usage: guardian.py preflight [-h] --project-root PROJECT_ROOT --stage\n                             {0,1,2,3,4,5,6,7} --task TASK\nguardian.py preflight: error: the following arguments are required: --project-root\n"
+  },
+  {
+    "label": "out-of-range stage",
+    "arguments": [
+      "preflight",
+      "--project-root",
+      "<SYNTHETIC_PROJECT>",
+      "--stage",
+      "8",
+      "--task",
+      "合成"
+    ],
+    "exit_code": 2,
+    "expected_exit_code": 2,
+    "stdout": "",
+    "stderr": "usage: guardian.py preflight [-h] --project-root PROJECT_ROOT --stage\n                             {0,1,2,3,4,5,6,7} --task TASK\nguardian.py preflight: error: argument --stage: invalid choice: 8 (choose from 0, 1, 2, 3, 4, 5, 6, 7)\n"
+  },
+  {
+    "label": "project without SPEC is rejected",
+    "arguments": [
+      "preflight",
+      "--project-root",
+      "<SYNTHETIC_WORKSPACE>\\no-spec-project",
+      "--stage",
+      "0",
+      "--task",
+      "合成"
+    ],
+    "exit_code": 1,
+    "expected_exit_code": 1,
+    "stdout": "",
+    "stderr": "SPEC.md not found under <SYNTHETIC_WORKSPACE>\\no-spec-project\n"
+  }
+]

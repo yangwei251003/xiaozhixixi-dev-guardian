@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="420" viewBox="0 0 1000 420" role="img" aria-labelledby="title desc">
+<title id="title">开发守门员流程示意</title><desc id="desc">合成契约输入原Python工具，进行预检、人工证据记录与交接。宿主安装与真实业务阶段未验证。</desc>
+<rect width="1000" height="420" rx="18" fill="#102b3b"/><g font-family="system-ui,sans-serif"><text x="32" y="43" fill="#7be2c5" font-size="17">流程示意 · 非宿主截图 / 非真实业务验收</text>
+<g fill="#173e50" stroke="#4e8d9c" stroke-width="2"><rect x="32" y="88" width="220" height="125" rx="14"/><rect x="285" y="88" width="200" height="125" rx="14"/><rect x="518" y="88" width="200" height="125" rx="14"/><rect x="751" y="88" width="217" height="125" rx="14"/></g>
+<g fill="#e7f2f6" font-size="20" text-anchor="middle"><text x="142" y="127">合成项目契约</text><text x="385" y="127">preflight</text><text x="618" y="127">record-stage</text><text x="860" y="127">handoff</text></g>
+<g fill="#bdd0dc" font-size="15" text-anchor="middle"><text x="142" y="158">SPEC + research 文件</text><text x="142" y="184">虚构映射 / 无业务输入</text><text x="385" y="158">文件 / 子串条件</text><text x="385" y="184">缺项返回失败</text><text x="618" y="158">写入人工提供的文本</text><text x="618" y="184">不运行 tests 字符串</text><text x="860" y="158">Git 元数据 + 阶段记录</text><text x="860" y="184">生成 Progress.md</text></g>
+<g stroke="#7be2c5" stroke-width="3"><path d="M255 150H280m-8-6 8 6-8 6M488 150H513m-8-6 8 6-8 6M721 150H746m-8-6 8 6-8 6"/></g>
+<rect x="32" y="250" width="936" height="130" rx="14" fill="#0b202e" stroke="#7896a5" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="54" y="283" fill="#e7f2f6" font-size="19">虚线范围：真实宿主与业务流程未验</text><text x="54" y="315" fill="#bdd0dc" font-size="16">未安装或触发实际插件 · 未联网调研 · 未调用模型 / 数据库 · 未修改真实项目</text><text x="54" y="346" fill="#bdd0dc" font-size="16">预检通过 ≠ 调研质量通过 ≠ 证据真实 ≠ 业务阶段完成；需要操作者核实实际结果。</text>
+</g></svg>

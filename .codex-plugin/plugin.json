@@ -1,0 +1,23 @@
+{
+  "name": "xiaozhixixi-dev-guardian",
+  "version": "0.1.0+codex.20260714181237",
+  "description": "Research-first development gates, tool selection, stage evidence, and cross-window handoffs for \u5c0f\u667a\u6790\u6790.",
+  "author": {
+    "name": "\u77e5\u5fae\u667a\u5b66"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "\u5c0f\u667a\u6790\u6790\u5f00\u53d1\u5b88\u95e8\u5458",
+    "shortDescription": "\u9636\u6bb5\u8c03\u7814\u3001Skill \u9009\u62e9\u3001\u8d28\u91cf\u95e8\u7981\u4e0e\u8de8\u7a97\u53e3\u4ea4\u63a5\u3002",
+    "longDescription": "\u5728\u6bcf\u9879\u5f00\u53d1\u4efb\u52a1\u524d\u68c0\u67e5\u8c03\u7814\u4e0e\u5de5\u5177\u6620\u5c04\uff0c\u8bb0\u5f55\u771f\u5b9e\u9a8c\u8bc1\u8bc1\u636e\uff0c\u5e76\u5728\u6bcf\u4e24\u4e2a\u9636\u6bb5\u540e\u751f\u6210\u53ef\u76f4\u63a5\u63a5\u68d2\u7684 Progress.md\u3002",
+    "developerName": "\u77e5\u5fae\u667a\u5b66",
+    "category": "Productivity",
+    "capabilities": [
+      "Research gates",
+      "Skill routing",
+      "Stage evidence",
+      "Progress handoff"
+    ],
+    "defaultPrompt": "\u4f7f\u7528\u5f00\u53d1\u5b88\u95e8\u5458\u68c0\u67e5\u5c0f\u667a\u6790\u6790\u4e0b\u4e00\u9879\u4efb\u52a1\u5e76\u9009\u62e9\u5408\u9002\u7684 Skill\u3002"
+  }
+}
